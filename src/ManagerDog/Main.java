@@ -1,3 +1,8 @@
+package ManagerDog;
+
+import ManagerDog.Dog;
+import ManagerDog.DogManager;
+
 public class Main {
     public static void main(String[] args) {
         DogManager dm = new DogManager();

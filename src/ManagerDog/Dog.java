@@ -1,3 +1,5 @@
+package ManagerDog;
+
 public class Dog {
     private String name;
     private double weigth;
@@ -55,7 +57,7 @@ public class Dog {
 
     @Override
     public String toString() {
-        return "Dog{" +
+        return "ManagerDog.Dog{" +
                 "name: '" + name + '\'' +
                 ", weigth=" + weigth +
                 ", gender=" + gender +

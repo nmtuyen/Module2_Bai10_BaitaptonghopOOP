@@ -1,3 +1,7 @@
+package ManagerDog;
+
+import ManagerDog.Dog;
+
 import java.util.ArrayList;
 
 public class DogManager {
@@ -33,14 +37,12 @@ public class DogManager {
     }
 
     public void Delete(double weigth) {
-        int index = 0;
-        while (index != -1) {
-            index = Search(weigth);
+            int index = Search(weigth);
             if (index == -1) {
-                System.out.println("không có con chó cần tìm");
+                System.out.println("không có con chó cần bắt");
             } else {
                 dogs.remove(Search(weigth));
             }
         }
     }
-}
+
