@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class DogManager {
     ArrayList<Dog> dogs;
@@ -7,26 +6,41 @@ public class DogManager {
     public DogManager(ArrayList<Dog> dogs) {
         this.dogs = dogs;
     }
-    public DogManager(){
+
+    public DogManager() {
         dogs = new ArrayList<>();
     }
-    public void Display(){
-        for (int i = 0; i < dogs.size(); i++){
-                System.out.println(dogs.get(i).toString());
+
+    public void Display() {
+        for (int i = 0; i < dogs.size(); i++) {
+            System.out.println(dogs.get(i).toString());
         }
         System.out.println("===========================================");
     }
-    public void add(Dog dog){
-       dogs.add(dog);
+
+    public void add(Dog dog) {
+        dogs.add(dog);
     }
-    public void Seach(double weight){
-        for (int i = 0; i < dogs.size(); i++){
-            if (weight == dogs.get(i).getWeigth()){
-                System.out.println(dogs.get(i));
+
+    public int Search(double weight) {
+        for (int i = 0; i < dogs.size(); i++) {
+            if (weight == dogs.get(i).getWeigth()) {
+//                System.out.println(dogs.get(i));
+                return i;
             }
         }
+        return -1;
     }
-    public void Edit(){
 
+    public void Delete(double weigth) {
+        int index = 0;
+        while (index != -1) {
+            index = Search(weigth);
+            if (index == -1) {
+                System.out.println("không có con chó cần tìm");
+            } else {
+                dogs.remove(Search(weigth));
+            }
+        }
     }
 }
