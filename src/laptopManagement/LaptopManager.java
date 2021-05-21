@@ -35,6 +35,21 @@ public class LaptopManager {
         }else
             System.out.println("Không có laptop cần xóa");
     }
+    public Laptop input(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Nhập ID laptop");
+        String laptopID = scanner.next();
+        System.out.println("Nhập hãng laptop");
+        String brand = scanner.next();
+        System.out.println("Nhập giá laptop");
+        int price = scanner.nextInt();
+        System.out.println("Nhập năm sản xuất laptop");
+        int year = scanner.nextInt();
+        System.out.println("Nhập kích thước màn hình laptop");
+        int screenSize = scanner.nextInt();
+        return new Laptop(laptopID,brand,price,year,screenSize);
+
+    }
     public void sort(){
         List<Map.Entry<String, Laptop>> list = new LinkedList<>(laptops.entrySet());
         Object a = laptops.entrySet();
