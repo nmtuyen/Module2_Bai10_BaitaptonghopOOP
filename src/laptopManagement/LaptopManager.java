@@ -1,8 +1,6 @@
 package laptopManagement;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class LaptopManager {
     Map<String, Laptop> laptops;
@@ -16,7 +14,7 @@ public class LaptopManager {
     public void display(){
         Set<String> keys = laptops.keySet();
         for (String key: keys) {
-            System.out.println("Key: "+key+":"+laptops.get(key));
+            System.out.println("key"+ key+":" + laptops.get(key));
         }
         System.out.println("----------------------------------");
     }
@@ -25,6 +23,27 @@ public class LaptopManager {
             return true;
         return false;
     }
-
+    public void edit(String laptopID, Laptop laptop){
+        if (check(laptopID)){
+            laptops.put(laptopID, laptop);
+        }else
+            System.out.println("Không có thông tin laptop cần thay đổi");
+    }
+    public void delete(String laptopID){
+        if (check(laptopID)){
+            laptops.remove(laptopID);
+        }else
+            System.out.println("Không có laptop cần xóa");
+    }
+    public void sort(){
+        List<Map.Entry<String, Laptop>> list = new LinkedList<>(laptops.entrySet());
+        Object a = laptops.entrySet();
+        Collections.sort(list, new Comparator<Map.Entry<String, Laptop>>() {
+            @Override
+            public int compare(Map.Entry<String, Laptop> o1, Map.Entry<String, Laptop> o2) {
+                return 0;
+            }
+        });
+    }
 }
 

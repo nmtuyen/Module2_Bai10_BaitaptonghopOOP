@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         LaptopManager lm = new LaptopManager();
         Scanner scanner = new Scanner(System.in);
-        int i = 0;
+        int choice = 0;
         do {
             System.out.println("=========Menu=========");
             System.out.println("1. Thêm 1 laptop mới");
@@ -18,29 +18,39 @@ public class Main {
 //                System.out.println("4.3 Sắp xếp laptop theo năm sản xuất");
             System.out.println("5. Thoát chương trình");
             System.out.println("Nhập lựa chọn: ");
-            i = scanner.nextInt();
-        }while (i < 0 || i > 5 );
-        switch (i){
+            choice = scanner.nextInt();
+        }while (choice < 0 || choice > 5 );
+        switch (choice){
             case 1:
-                System.out.println("Enter thông tin laptop mới");
-                Scanner sc = new Scanner(System.in);
                 System.out.println("Nhập ID laptop");
-                String laptopID = sc.next();
+                String laptopID = scanner.next();
                 System.out.println("Nhập hãng laptop");
-                String brand = sc.next();
+                String brand = scanner.next();
                 System.out.println("Nhập giá laptop");
-                int price = sc.nextInt();
+                int price = scanner.nextInt();
                 System.out.println("Nhập năm sản xuất laptop");
-                int year = sc.nextInt();
+                int year = scanner.nextInt();
                 System.out.println("Nhập kích thước màn hình laptop");
-                int screenSize = sc.nextInt();
-                lm.add(laptopID, new Laptop(laptopID, brand, price, year, screenSize));
+                int screenSize = scanner.nextInt();
+                lm.add(laptopID, new Laptop(laptopID, brand, price, year,screenSize));
                 lm.display();
+                break;
             case 2:
                 String ID = scanner.next();
                 if (lm.check(ID)){
-
+                    System.out.println("Nhập ID laptop");
+                    String laptopID1 = scanner.next();
+                    System.out.println("Nhập hãng laptop");
+                    String brand1 = scanner.next();
+                    System.out.println("Nhập giá laptop");
+                    int price1 = scanner.nextInt();
+                    System.out.println("Nhập năm sản xuất laptop");
+                    int year1 = scanner.nextInt();
+                    System.out.println("Nhập kích thước màn hình laptop");
+                    int screenSize1 = scanner.nextInt();
+                    lm.add(ID, new Laptop(laptopID1, brand1, price1, year1, screenSize1));
                 }
+                lm.display();
         }
     }
 }

@@ -1,6 +1,6 @@
 package laptopManagement;
 
-public class Laptop {
+public class Laptop implements Cloneable{
     private String LaptopID;
     private String brand;
     private int price;
