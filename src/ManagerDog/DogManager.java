@@ -15,7 +15,7 @@ public class DogManager {
         dogs = new ArrayList<>();
     }
 
-    public void Display() {
+    public void display() {
         for (int i = 0; i < dogs.size(); i++) {
             System.out.println(dogs.get(i).toString());
         }
@@ -26,22 +26,20 @@ public class DogManager {
         dogs.add(dog);
     }
 
-    public int Search(double weight) {
+    public int search(double weight) {
         for (int i = 0; i < dogs.size(); i++) {
             if (weight == dogs.get(i).getWeigth()) {
-//                System.out.println(dogs.get(i));
                 return i;
             }
         }
         return -1;
     }
-
-    public void Delete(double weigth) {
-            int index = Search(weigth);
+    public void delete(double weigth) {
+            int index = search(weigth);
             if (index == -1) {
                 System.out.println("không có con chó cần bắt");
             } else {
-                dogs.remove(Search(weigth));
+                dogs.remove(search(weigth));
             }
         }
     }

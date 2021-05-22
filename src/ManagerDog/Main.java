@@ -11,9 +11,9 @@ public class Main {
         dm.add(new Dog("Ki", 12, true, "brown", 4));
         dm.add(new Dog("Ki", 11, true, "brown", 5));
         dm.add(new Dog("Ki", 10, true, "brown", 1));
-        dm.Display();
-        dm.Search(10);
-        dm.Delete(10);
-        dm.Display();
+        dm.display();
+        dm.search(10);
+        dm.delete(10);
+        dm.display();
     }
 }
