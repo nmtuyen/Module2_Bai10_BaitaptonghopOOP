@@ -38,6 +38,7 @@ public class Fruit {
         this.color = color;
     }
 
+
     @Override
     public String toString() {
         return "Fruit{" +

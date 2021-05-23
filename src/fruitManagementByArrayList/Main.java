@@ -8,16 +8,37 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         int choice = 0;
         do {
-            System.out.println("1. Thêm 1 loại quả");
-            System.out.println("2. Sửa thông tin 1 loại quả");
-            System.out.println("3. Xóa loại quả không bán nữa");
-            System.out.println("4. Thoát khỏi chương trình");
-            System.out.print("Nhập lệnh muốn thực hiện: ");
-            choice = scanner.nextInt();
+            choice = fm.menu();
             switch (choice){
                 case 1:
-
-                    fm.add();
+                    System.out.println("Nhập thông tin loại hoa quả muốn thêm");
+                    fm.add(fm.input());
+                    fm.display();
+                    fm.menu();
+                case 2:
+                    System.out.println("Nhập tên loại quả cần sửa: ");
+                    String name = scanner.next();
+                    if (fm.check(name)!=-1){
+                        fm.edit(name, fm.input());
+                        fm.display();
+                    }else{
+                        System.out.println("không có loại quả cần sửa");
+                        fm.display();
+                    }
+                    fm.menu();
+                case 3:
+                    System.out.println("Nhập tên loại quả cần xóa: ");
+                    String name1 = scanner.next();
+                    if (fm.check(name1)!=-1){
+                        fm.delete(name1);
+                        fm.display();
+                    }else{
+                        System.out.println("không có loại quả cần xóa");
+                        fm.display();
+                    }
+                    fm.menu();
+                case 4:
+                    System.exit(0);
             }
         }while (choice<0 && choice>4);
     }
