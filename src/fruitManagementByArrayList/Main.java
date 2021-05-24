@@ -40,7 +40,7 @@ public class Main {
                 case 4:
                     System.exit(0);
             }
-        }while (choice<0 && choice>4);
+        }while (choice<0 || choice>4);
     }
 
 }
