@@ -1,6 +1,6 @@
 package mobileManagementByArrayList;
 
-public class Mobile {
+public class Mobile implements Comparable<Mobile>{
     private String imei;
     private String name;
     private String brand;
@@ -67,5 +67,10 @@ public class Mobile {
                 ", price:" + price +
                 ", color:'" + color + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Mobile o) {
+        return this.name.compareTo(o.name);
     }
 }

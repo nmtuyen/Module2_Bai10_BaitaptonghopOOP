@@ -1,11 +1,13 @@
 package mobileManagementByArrayList;
 
+import java.util.Collections;
 import java.util.Scanner;
 
 public class MainTest {
     public static void main(String[] args) {
         ManageMobile mb = new ManageMobile();
         Scanner sc = new Scanner(System.in);
+        System.out.println("List điện thoại của cửa hàng là: ");
         mb.display(mb.mobiles);
         while (true) {
             mb.menu();
@@ -32,6 +34,7 @@ public class MainTest {
                 case 4:
                     System.out.println("1. Tìm theo tên");
                     System.out.println("2. Tìm theo hãng");
+                    System.out.println("3. Tìm kiếm theo khoảng giá");
                     int choice2;
                     choice2 = sc.nextInt();
                     while (true) {
@@ -39,16 +42,41 @@ public class MainTest {
                             case 1:
                                 System.out.println("Nhập tên muốn tìm");
                                 String name2 = sc.next();
-                                mb.searchByName(name2);
+                                if (mb.searchByName(name2) == null){
+                                    System.out.println("Không có thông tin điện thoại bạ muốn tìm");
+                                }else{
+                                    System.out.println("Điện thoại bạn muốn tìm là");
+                                    mb.display(mb.searchByName(name2));
+                                }
+
                                 break;
                             case 2:
                                 System.out.println("Nhập hãng muốn tìm");
                                 String brand = sc.next();
                                 mb.display(mb.searchByBrand1(brand));
                                 break;
+                            case 3:
+                                System.out.println("Nhập khoảng giá điện thoại muốn tìm");
+                                System.out.println("Nhập khoảng giá thấp nhất");
+                                int minPrice = sc.nextInt();
+                                System.out.println("Nhập khoảng giá cao nhất");
+                                int maxPrice = sc.nextInt();
+                                if (minPrice>maxPrice|| mb.searchByPrice(minPrice,maxPrice)==null){
+                                    System.out.println("Không có điện thoại trong khoảng giá bạn nhập");
+                                }else{
+                                    System.out.println("List điện thoại trong khoảng giá bạn muốn tìm là");
+                                    mb.display(mb.searchByPrice(maxPrice,minPrice));
+                                }
+                                break;
                         }
                         break;
                     }
+                case 5:
+                    Collections.sort(mb.mobiles);
+                    mb.display(mb.mobiles);
+                    break;
+                case 6:
+                    System.exit(0);
             }
         }
     }

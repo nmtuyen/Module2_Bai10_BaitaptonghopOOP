@@ -10,9 +10,9 @@ public class ManageMobile {
 
     public ManageMobile() {
         mobiles = new ArrayList<>();
-        mobiles.add(new Mobile("123456", "1280", "Nokia", 500, "black"));
-        mobiles.add(new Mobile("789561", "6300", "Nokia", 700, "gold"));
-        mobiles.add(new Mobile("653235", "galaxy", "Samsung", 650, "gray"));
+        mobiles.add(new Mobile("123456", "Abc", "Nokia", 500, "black"));
+        mobiles.add(new Mobile("789561", "Bcd", "Nokia", 700, "gold"));
+        mobiles.add(new Mobile("653235", "Galaxy", "Samsung", 650, "gray"));
         mobiles.add(new Mobile("456489", "Iphone12", "Apple", 1500, "pink"));
         mobiles.add(new Mobile("123123", "Iphone13", "Apple", 1500, "black"));
     }
@@ -65,12 +65,21 @@ public class ManageMobile {
         } else
             System.out.println("Không có thông tin điện thoại cần xóa");
     }
-    public void searchByName(String name){
+    public ArrayList<Mobile> searchByName(String name){
+        ArrayList<Mobile> arrayName = new ArrayList<>();
         for (int i = 0; i < mobiles.size(); i++){
             if (mobiles.get(i).getName().equals(name)){
-                System.out.println(mobiles.get(i).toString());
+                arrayName.add(mobiles.get(i));
             }
-        }
+        }return arrayName;
+    }
+    public ArrayList<Mobile> searchByPrice(int minPrice, int maxPrice){
+        ArrayList<Mobile> arrayPrice = new ArrayList<>();
+        for (int i = 0; i < mobiles.size(); i++){
+            if (mobiles.get(i).getPrice()>=minPrice && mobiles.get(i).getPrice()<maxPrice){
+                arrayPrice.add(mobiles.get(i));
+            }
+        }return arrayPrice;
     }
     public ArrayList<Mobile> searchByBrand1(String brand){
         ArrayList<Mobile> arrayBrand = new ArrayList<>();
