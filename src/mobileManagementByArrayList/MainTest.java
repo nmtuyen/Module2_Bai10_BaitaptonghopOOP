@@ -1,6 +1,7 @@
 package mobileManagementByArrayList;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class MainTest {
@@ -42,7 +43,7 @@ public class MainTest {
                             case 1:
                                 System.out.println("Nhập tên muốn tìm");
                                 String name2 = sc.next();
-                                if (mb.searchByName(name2) == null){
+                                if (mb.searchByName(name2).size() == 0){
                                     System.out.println("Không có thông tin điện thoại bạ muốn tìm");
                                 }else{
                                     System.out.println("Điện thoại bạn muốn tìm là");
@@ -61,22 +62,32 @@ public class MainTest {
                                 int minPrice = sc.nextInt();
                                 System.out.println("Nhập khoảng giá cao nhất");
                                 int maxPrice = sc.nextInt();
-                                if (minPrice>maxPrice|| mb.searchByPrice(minPrice,maxPrice)==null){
+                                if (mb.searchByPrice(minPrice,maxPrice).size() == 0){
                                     System.out.println("Không có điện thoại trong khoảng giá bạn nhập");
                                 }else{
                                     System.out.println("List điện thoại trong khoảng giá bạn muốn tìm là");
-                                    mb.display(mb.searchByPrice(maxPrice,minPrice));
+                                    mb.display(mb.searchByPrice(minPrice,maxPrice));
                                 }
                                 break;
                         }
                         break;
                     }
                 case 5:
-                    Collections.sort(mb.mobiles);
+                    mb.sortPriceUp();
                     mb.display(mb.mobiles);
                     break;
                 case 6:
+                    mb.sortPriceDown();
+                    mb.display(mb.mobiles);
+                    break;
+                case 7:
+                    mb.sortByName();
+                    mb.display(mb.mobiles);
+                    break;
+                case 0:
                     System.exit(0);
+                default:
+                    System.out.println("Mời nhập lại");
             }
         }
     }

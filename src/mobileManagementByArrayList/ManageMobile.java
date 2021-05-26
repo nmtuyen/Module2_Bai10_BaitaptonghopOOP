@@ -1,20 +1,18 @@
 package mobileManagementByArrayList;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class ManageMobile {
     ArrayList<Mobile> mobiles = new ArrayList<>();
 
     public ManageMobile() {
         mobiles = new ArrayList<>();
+        mobiles.add(new Mobile("456489", "Iphone12", "Apple", 1500, "pink"));
+        mobiles.add(new Mobile("123123", "Iphone12", "Apple", 1600, "black"));
         mobiles.add(new Mobile("123456", "Abc", "Nokia", 500, "black"));
         mobiles.add(new Mobile("789561", "Bcd", "Nokia", 700, "gold"));
         mobiles.add(new Mobile("653235", "Galaxy", "Samsung", 650, "gray"));
-        mobiles.add(new Mobile("456489", "Iphone12", "Apple", 1500, "pink"));
-        mobiles.add(new Mobile("123123", "Iphone13", "Apple", 1500, "black"));
+
     }
     public Mobile input() {
         Scanner scanner = new Scanner(System.in);
@@ -81,6 +79,7 @@ public class ManageMobile {
             }
         }return arrayPrice;
     }
+
     public ArrayList<Mobile> searchByBrand1(String brand){
         ArrayList<Mobile> arrayBrand = new ArrayList<>();
         for (int i = 0; i < mobiles.size(); i++){
@@ -97,14 +96,43 @@ public class ManageMobile {
             }
         }
     }
-
+    public void sortPriceUp(){
+        Collections.sort(mobiles, new Comparator<Mobile>() {
+            @Override
+            public int compare(Mobile o1, Mobile o2) {
+                return o1.getPrice()- o2.getPrice();
+            }
+        });
+    }
+    public void sortPriceDown(){
+        Collections.sort(mobiles, new Comparator<Mobile>() {
+            @Override
+            public int compare(Mobile o1, Mobile o2) {
+                return -(o2.getPrice()-o1.getPrice());
+            }
+        });
+    }
+    public void sortByName(){
+        Collections.sort(mobiles, new Comparator<Mobile>() {
+            @Override
+            public int compare(Mobile o1, Mobile o2) {
+                int ss = o1.getName().compareTo(o2.getName());
+                if (ss == 0){
+                    return o1.getPrice() - o2.getPrice();
+                }else
+                    return ss;
+            }
+        });
+    }
     public void menu(){
         System.out.println("==========Menu==========");
         System.out.println("1. Thêm 1 điện thoại");
         System.out.println("2. Sửa thông tin 1 điện thoại");
         System.out.println("3. Xóa thông tin 1 điện thoại");
         System.out.println("4. Tìm thông tin 1 điện thoại");
-        System.out.println("5. Sắp xếp điện thoại");
-        System.out.println("6. Thoát chương trình");
+        System.out.println("5. Sắp xếp điện thoại theo giá tăng dần");
+        System.out.println("6. Sắp xếp điện thoại theo giá giảm dần");
+        System.out.println("6. Sắp xếp điện thoại theo tên");
+        System.out.println("0. Thoát chương trình");
     }
 }
